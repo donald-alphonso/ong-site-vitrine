@@ -4,6 +4,8 @@ import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import './App.css';
 import { Mission } from './components/Mission';
+import { Programs } from './components/Programs';
+import { Contact } from './components/Contact';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Header />
       <Hero />
       <Mission />
+      <Programs />
+      <Contact />
       <Footer />
     </div>
   );
