@@ -14,16 +14,25 @@ export function Header() {
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-600 hover:text-red-500">
+            <a href="#home" className="text-gray-600 hover:text-red-500">
               Accueil
             </a>
-            <a href="#" className="text-gray-600 hover:text-red-500">
+            <a href="#mission" className="text-gray-600 hover:text-red-500">
               Notre Mission
             </a>
-            <a href="#" className="text-gray-600 hover:text-red-500">
+            <a href="#programs" className="text-gray-600 hover:text-red-500">
               Programmes
             </a>
-            <a href="#" className="text-gray-600 hover:text-red-500">
+            <a
+              href="#testimonials"
+              className="text-gray-600 hover:text-red-500"
+            >
+              Témoignages
+            </a>
+            <a href="#blog" className="text-gray-600 hover:text-red-500">
+              Blog
+            </a>
+            <a href="#contact" className="text-gray-600 hover:text-red-500">
               Contact
             </a>
             <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
@@ -45,25 +54,37 @@ export function Header() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
-              href="#"
+              href="#home"
               className="block px-3 py-2 text-gray-600 hover:text-red-500"
             >
               Accueil
             </a>
             <a
-              href="#"
+              href="#mission"
               className="block px-3 py-2 text-gray-600 hover:text-red-500"
             >
               Notre Mission
             </a>
             <a
-              href="#"
+              href="#programs"
               className="block px-3 py-2 text-gray-600 hover:text-red-500"
             >
               Programmes
             </a>
             <a
-              href="#"
+              href="#testimonials"
+              className="block px-3 py-2 text-gray-600 hover:text-red-500"
+            >
+              Témoignages
+            </a>
+            <a
+              href="#blog"
+              className="block px-3 py-2 text-gray-600 hover:text-red-500"
+            >
+              Blog
+            </a>
+            <a
+              href="#contact"
               className="block px-3 py-2 text-gray-600 hover:text-red-500"
             >
               Contact
