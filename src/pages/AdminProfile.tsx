@@ -1,14 +1,14 @@
-import { getUserRole } from "../utils/auth"
+import { getUserRole } from '../utils/auth';
 
 const AdminProfile: React.FC = () => {
-    const role = getUserRole();
+  const role = getUserRole();
 
-    return (
-        <div>
-            <h1>Admin Profile</h1>
-            <p>Role: {role}</p>
-        </div>
-    );
-}
+  return (
+    <div>
+      <h1>Admin Profile</h1>
+      <p>Role: {role}</p>
+    </div>
+  );
+};
 
 export default AdminProfile;
