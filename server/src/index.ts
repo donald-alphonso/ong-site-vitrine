@@ -13,6 +13,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route de test
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
+
 // Database connection
 mongoose
   .connect(process.env.MONGO_URI || '', {})

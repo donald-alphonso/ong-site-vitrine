@@ -8,19 +8,33 @@ import { Programs } from './components/Programs';
 import { Contact } from './components/Contact';
 import { Blog } from './components/Blog';
 import { Testimonials } from './components/Testimonials';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <Mission />
-      <Programs />
-      <Testimonials />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Hero />
+                <Mission />
+                <Programs />
+                <Testimonials />
+                <Blog />
+                <Contact />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
