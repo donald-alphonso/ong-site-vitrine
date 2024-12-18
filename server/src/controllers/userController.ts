@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
-    const users = await User.find();
+    const users = await User.find().sort({ createdAt: -1 });
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving users', error });
@@ -61,22 +61,26 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-  const {id} = req.params;
+  const { id } = req.params;
 
   try {
     await User.findByIdAndDelete(id);
-    res.status(200).json({message: 'User deleted sucessfully'});
+    res.status(200).json({ message: 'User deleted sucessfully' });
   } catch (error) {
-    res.status(500).json({message: 'Error deleting user', error});
+    res.status(500).json({ message: 'Error deleting user', error });
   }
 };
 
 export const promoteUser = async (req: Request, res: Response) => {
-  const {id} = req.params;
+  const { id } = req.params;
   try {
-    const user = await User.findByIdAndUpdate(id, {role: 'admin'}, {new: true});
-    res.status(200).json({message: 'User promoted sucessfully', user});
+    const user = await User.findByIdAndUpdate(
+      id,
+      { role: 'admin' },
+      { new: true }
+    );
+    res.status(200).json({ message: 'User promoted sucessfully', user });
   } catch (error) {
-    res.status(500).json({message: 'Error promoting user', error});
+    res.status(500).json({ message: 'Error promoting user', error });
   }
-}
+};

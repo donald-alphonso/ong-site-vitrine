@@ -2,7 +2,12 @@ import jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 
 interface AuthRequest extends Request {
-  user?: string;
+  user?: {
+    userId: string;
+    role: 'admin' | 'user';
+    iat: number;
+    exp: number;
+  };
 }
 
 export const protect = (
@@ -19,7 +24,7 @@ export const protect = (
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || '');
-    req.user = (decoded as any).id;
+    req.user = decoded as any;
     next();
   } catch (error) {
     res.status(401).json({ message: 'Token invalid or expired' });
@@ -31,8 +36,8 @@ export const isAdmin = (
   res: Response,
   next: NextFunction
 ) => {
-  const user = req.body.user;
-  if (user.role !== 'admin') {
+  const user = req.user;
+  if (!user || user.role !== 'admin') {
     res.status(403).json({ message: 'Admin access required' });
     return;
   } else {

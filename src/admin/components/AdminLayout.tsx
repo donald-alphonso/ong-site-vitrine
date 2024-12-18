@@ -1,0 +1,69 @@
+import { ReactNode } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+interface AdminLayoutProps {
+  children: ReactNode;
+}
+
+export function AdminLayout({ children }: AdminLayoutProps) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/admin/login');
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <div className="fixed inset-y-0 left-0 w-64 bg-red-800">
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-center h-16 bg-red-900">
+            <h1 className="text-white text-xl font-bold">Administration</h1>
+          </div>
+          <nav className="flex-1 px-4 py-6 space-y-2">
+            <Link
+              to="/admin/dashboard"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span></span>
+              Tableau de bord
+            </Link>
+            <Link
+              to="/admin/users"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span></span>
+              Utilisateur
+            </Link>
+          </nav>
+
+          <div className="p-4">
+            <button
+              onClick={handleLogout}
+              className="w-full flex item-center px-4 py-2 text-white hover: bg-red-700 rounded-lg"
+            >
+              <span></span>
+              Déconnexion
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="ml-64">
+        <header className="bg-white shadow">
+          <div className="px-6 py-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-800">
+                Espace Administration
+              </h2>
+            </div>
+          </div>
+        </header>
+
+        <main className="p-6">{children}</main>
+      </div>
+    </div>
+  );
+}

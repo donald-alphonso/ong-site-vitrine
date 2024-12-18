@@ -1,5 +1,9 @@
 import express from 'express';
-import { deleteUser, getAllUsers, promoteUser } from '../controllers/userController';
+import {
+  deleteUser,
+  getAllUsers,
+  promoteUser,
+} from '../controllers/userController';
 import { isAdmin, protect } from '../middleware/authMiddleware';
 
 const router = express.Router();
