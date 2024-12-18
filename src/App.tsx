@@ -9,7 +9,8 @@ import { Contact } from './components/Contact';
 import { Blog } from './components/Blog';
 import { Testimonials } from './components/Testimonials';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
+import Login from './admin/pages/Login';
+import { AdminRoutes } from './admin/AdminRoutes';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               </>
             }
           />
+          <Route path="/admin/*" element={<AdminRoutes />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>

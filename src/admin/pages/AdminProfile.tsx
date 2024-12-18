@@ -1,4 +1,4 @@
-import { getUserRole } from '../utils/auth';
+import { getUserRole } from '../../utils/auth';
 
 const AdminProfile: React.FC = () => {
   const role = getUserRole();
