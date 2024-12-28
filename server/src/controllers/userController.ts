@@ -64,7 +64,12 @@ export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    await User.findByIdAndDelete(id);
+    const user = await User.findByIdAndDelete(id);
+
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+    }
+
     res.status(200).json({ message: 'User deleted sucessfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error deleting user', error });
@@ -74,13 +79,45 @@ export const deleteUser = async (req: Request, res: Response) => {
 export const promoteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const user = await User.findByIdAndUpdate(
-      id,
-      { role: 'admin' },
-      { new: true }
-    );
-    res.status(200).json({ message: 'User promoted sucessfully', user });
+    const user = await User.findById(id);
+
+    if (user) {
+      if (user.role === 'admin') {
+        res.status(400).json({ message: 'User is already admin' });
+      }
+  
+      user.role = 'admin';
+      await user.save();
+  
+      res.status(200).json({ message: 'User promoted sucessfully', user });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+
   } catch (error) {
     res.status(500).json({ message: 'Error promoting user', error });
+  }
+};
+
+export const demoteUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id);
+
+    if (user) {
+      if (user.role === 'user') {
+        res.status(400).json({ message: 'User is already a regular user' });
+      }
+  
+      user.role = 'user';
+      await user.save();
+  
+      res.status(200).json({ message: 'User demoted sucessfully', user });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+
+  } catch (error) {
+    res.status(500).json({ message: 'Error demoting user', error });
   }
 };
