@@ -37,10 +37,11 @@ const UserTable: React.FC = () => {
       const response =await axios[method](url, {
         headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json" },
       });
+      console.log(`User ${action}d successfully`, response.data);
       alert(`User ${action}d successfully`);
       fetchUsers();
-    } catch (error) {
-      console.error(`Error trying to ${action} user:`, error)
+    } catch (error: any) {
+      console.error(`Error trying to ${action} user:`, error.response?.data || error.message)
     }
   };
 
@@ -90,12 +91,15 @@ const UserTable: React.FC = () => {
                 ....
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
+                {user.role === "admin" ? (
                 <button className='text-green-600 hover:text-green-900' onClick={() => handleAction(user._id, "promote")}>
                   Promote
                 </button>
+                ): (
                 <button className='text-orange-600 hover:text-orange-900' onClick={() => handleAction(user._id, "demote")}>
                   Demote
                 </button>
+                )}
                 <button className='text-red-600 hover:text-red-900' onClick={() => handleAction(user._id, "delete")}>
                   Delete
                 </button>
