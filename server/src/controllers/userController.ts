@@ -84,6 +84,7 @@ export const promoteUser = async (req: Request, res: Response) => {
     if (user) {
       if (user.role === 'admin') {
         res.status(400).json({ message: 'User is already admin' });
+        return;
       }
   
       user.role = 'admin';
@@ -107,6 +108,7 @@ export const demoteUser = async (req: Request, res: Response) => {
     if (user) {
       if (user.role === 'user') {
         res.status(400).json({ message: 'User is already a regular user' });
+        return;
       }
   
       user.role = 'user';

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -14,13 +14,7 @@ const UserTable: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(
-        'http://localhost:5000/api/admin/users',
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await api.get('/admin/users');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -31,17 +25,13 @@ const UserTable: React.FC = () => {
 
   const handleAction = async (id: string, action: "delete" | "promote" | "demote") => {
     try {
-      const token = localStorage.getItem('token');
-      const url = `http://localhost:5000/api/admin/users/${id}/${action === "delete" ? "" : action}`;
+      const url = `/admin/users/${id}/${action === "delete" ? "" : action}`;
       const method = action === "delete" ? "delete" : "patch";
-      const response =await axios[method](url, {
-        headers: { Authorization: `Bearer ${token}` , "Content-Type": "application/json" },
-      });
-      console.log(`User ${action}d successfully`, response.data);
+      await api[method](url);
       alert(`User ${action}d successfully`);
       fetchUsers();
     } catch (error: any) {
-      console.error(`Error trying to ${action} user:`, error.response?.data || error.message)
+      console.error(`Error trying to ${action} user:`, error)
     }
   };
 
@@ -91,7 +81,7 @@ const UserTable: React.FC = () => {
                 ....
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
-                {user.role === "admin" ? (
+                {user.role !== "admin" ? (
                 <button className='text-green-600 hover:text-green-900' onClick={() => handleAction(user._id, "promote")}>
                   Promote
                 </button>
