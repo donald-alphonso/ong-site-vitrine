@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -14,18 +14,24 @@ const UserTable: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(
-        'http://localhost:5000/api/admin/users',
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await api.get('/admin/users');
       setUsers(response.data);
     } catch (error) {
-      console.log('Error fetching users:', error);
+      console.error('Error fetching users:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleAction = async (id: string, action: "delete" | "promote" | "demote") => {
+    try {
+      const url = `/admin/users/${id}/${action === "delete" ? "" : action}`;
+      const method = action === "delete" ? "delete" : "patch";
+      await api[method](url);
+      alert(`User ${action}d successfully`);
+      fetchUsers();
+    } catch (error: any) {
+      console.error(`Error trying to ${action} user:`, error)
     }
   };
 
@@ -74,8 +80,19 @@ const UserTable: React.FC = () => {
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 ....
               </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                ....
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
+                {user.role !== "admin" ? (
+                <button className='text-green-600 hover:text-green-900' onClick={() => handleAction(user._id, "promote")}>
+                  Promote
+                </button>
+                ): (
+                <button className='text-orange-600 hover:text-orange-900' onClick={() => handleAction(user._id, "demote")}>
+                  Demote
+                </button>
+                )}
+                <button className='text-red-600 hover:text-red-900' onClick={() => handleAction(user._id, "delete")}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

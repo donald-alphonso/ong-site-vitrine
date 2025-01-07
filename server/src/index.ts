@@ -10,7 +10,12 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Autorise votre frontend
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Autorise les en-têtes sensibles
+  allowedHeaders: ['Authorization', 'Content-Type'],
+}));
 app.use(express.json());
 
 // Route de test

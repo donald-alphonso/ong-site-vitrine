@@ -20,22 +20,32 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Liens Rapides</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#home" className="text-gray-400 hover:text-white">
                   Accueil
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#mission" className="text-gray-400 hover:text-white">
                   Notre Mission
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#programs" className="text-gray-400 hover:text-white">
                   Programmes
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#testimonials" className="text-gray-400 hover:text-white">
+                Témoignages
+                </a>
+              </li>
+              <li>
+                <a href="#blog" className="text-gray-400 hover:text-white">
+                Blog
+                </a>
+              </li>
+              <li>
+                <a href="contact" className="text-gray-400 hover:text-white">
                   Contact
                 </a>
               </li>
