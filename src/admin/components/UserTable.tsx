@@ -1,5 +1,6 @@
 import api from '../../utils/api';
 import { useEffect, useState } from 'react';
+import UserCreateModal from './UserCreateModal';
 
 interface User {
   _id: string;
@@ -45,6 +46,9 @@ const UserTable: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
+      <div className='mb-4'>
+        <UserCreateModal onUserCreated={fetchUsers} />
+      </div>
       <table className="min-w-full bg-white border-gray-200">
         <thead>
           <tr>
