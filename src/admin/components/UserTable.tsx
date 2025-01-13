@@ -46,7 +46,7 @@ const UserTable: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
-      <div className='mb-4'>
+      <div className='mb-4 flex justify-end'>
         <UserCreateModal onUserCreated={fetchUsers} />
       </div>
       <table className="min-w-full bg-white border-gray-200">
