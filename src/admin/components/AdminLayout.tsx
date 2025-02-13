@@ -26,24 +26,31 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               to="/admin/dashboard"
               className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
-              <span></span>
+              <span className="mr-3">📊</span>
               Tableau de bord
             </Link>
             <Link
               to="/admin/users"
               className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
-              <span></span>
+               <span className="mr-3">👤</span>
               Utilisateur
+            </Link>
+            <Link
+              to="/admin/contacts"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+               <span className="mr-3">📧</span>
+              Contacts
             </Link>
           </nav>
 
           <div className="p-4">
             <button
               onClick={handleLogout}
-              className="w-full flex item-center px-4 py-2 text-white hover: bg-red-700 rounded-lg"
+              className="w-full flex item-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
-              <span></span>
+              <span className="mr-3">🚪</span>
               Déconnexion
             </button>
           </div>
