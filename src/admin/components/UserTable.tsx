@@ -7,6 +7,8 @@ interface User {
   name: string;
   email: string;
   role: string;
+  isOnline: boolean;
+  lastLogin: Date;
 }
 
 const UserTable: React.FC = () => {
@@ -66,10 +68,10 @@ const UserTable: React.FC = () => {
               Email
             </th>
             <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-              Role
+              Statut
             </th>
             <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-              Statut
+              Role
             </th>
             <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
               Actions
@@ -86,10 +88,25 @@ const UserTable: React.FC = () => {
                 {user.email}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                {user.role}
+                <div
+                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ${
+                  user.isOnline === false
+                    ? 'bg-yellow-100 text-yellow-800'
+                    : 'bg-green-100 text-green-800'
+                }`}
+                >
+                  {user.isOnline === false ? 'Offline' : 'Online'}  
+                </div>
+                <div>
+                  {user.lastLogin && (
+                    <span className="text-gray-500 text-xs">
+                      Last login: {user.lastLogin.toLocaleString()}
+                    </span>
+                  )}
+                </div>
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                ....
+                {user.role}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
                 {user.role !== 'admin' ? (

@@ -1,5 +1,8 @@
 import { ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { jwtDecode } from 'jwt-decode';
+import api from '../../utils/api';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -7,10 +10,25 @@ interface AdminLayoutProps {
 
 export function AdminLayout({ children }: AdminLayoutProps) {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/admin/login');
+  const handleLogout = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token to logout');
+      return;
+    }
+
+    const decodedToken: any = jwtDecode(token);
+
+    try {
+      const response = await api.patch(`/auth/logout/${decodedToken.userId}`);
+      console.log(response);
+      logout();
+      navigate('/admin/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   return (

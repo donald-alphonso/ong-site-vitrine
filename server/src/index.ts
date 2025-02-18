@@ -4,7 +4,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import auth from './routes/auth';
 import adminRoutes from './routes/adminRoutes';
-import contactRoute from './routes/contactRoutes';
+import contactRoutes from './routes/contactRoutes';
+import statRoutes from './routes/statRoutes';
 dotenv.config();
 
 const app = express();
@@ -33,7 +34,8 @@ mongoose
 
 app.use('/api/auth', auth);
 app.use('/api/admin', adminRoutes);
-app.use('/api', contactRoute);
+app.use('/api', contactRoutes);
+app.use('/api', statRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

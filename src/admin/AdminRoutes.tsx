@@ -9,7 +9,7 @@ import ContactTable from './components/ContactTable';
 export function AdminRoutes() {
   return (
     <Routes>
-      <Route path="login" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route
         path="dashboard"
         element={

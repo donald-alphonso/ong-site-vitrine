@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await api.get('xxxxxxxxxxxxx');
+        const response = await api.get('/contactStats');
         setStats(response.data);
       } catch (error) {
         console.error('Error fetching stats:', error);

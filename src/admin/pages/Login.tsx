@@ -59,7 +59,7 @@ const Login: React.FC = () => {
               Password
             </label>
             <input
-              type="passsword"
+              type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
