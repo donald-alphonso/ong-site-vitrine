@@ -24,15 +24,18 @@ const UserTable: React.FC = () => {
     }
   };
 
-  const handleAction = async (id: string, action: "delete" | "promote" | "demote") => {
+  const handleAction = async (
+    id: string,
+    action: 'delete' | 'promote' | 'demote'
+  ) => {
     try {
-      const url = `/admin/users/${id}/${action === "delete" ? "" : action}`;
-      const method = action === "delete" ? "delete" : "patch";
+      const url = `/admin/users/${id}/${action === 'delete' ? '' : action}`;
+      const method = action === 'delete' ? 'delete' : 'patch';
       await api[method](url);
       alert(`User ${action}d successfully`);
       fetchUsers();
     } catch (error: any) {
-      console.error(`Error trying to ${action} user:`, error)
+      console.error(`Error trying to ${action} user:`, error);
     }
   };
 
@@ -43,14 +46,14 @@ const UserTable: React.FC = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
-        </div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      </div>
     );
   }
 
   return (
     <div className="overflow-x-auto">
-      <div className='mb-4 flex justify-end'>
+      <div className="mb-4 flex justify-end">
         <UserCreateModal onUserCreated={fetchUsers} />
       </div>
       <table className="min-w-full bg-white border-gray-200">
@@ -89,16 +92,25 @@ const UserTable: React.FC = () => {
                 ....
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
-                {user.role !== "admin" ? (
-                <button className='text-green-600 hover:text-green-900' onClick={() => handleAction(user._id, "promote")}>
-                  Promote
-                </button>
-                ): (
-                <button className='text-orange-600 hover:text-orange-900' onClick={() => handleAction(user._id, "demote")}>
-                  Demote
-                </button>
+                {user.role !== 'admin' ? (
+                  <button
+                    className="text-green-600 hover:text-green-900"
+                    onClick={() => handleAction(user._id, 'promote')}
+                  >
+                    Promote
+                  </button>
+                ) : (
+                  <button
+                    className="text-orange-600 hover:text-orange-900"
+                    onClick={() => handleAction(user._id, 'demote')}
+                  >
+                    Demote
+                  </button>
                 )}
-                <button className='text-red-600 hover:text-red-900' onClick={() => handleAction(user._id, "delete")}>
+                <button
+                  className="text-red-600 hover:text-red-900"
+                  onClick={() => handleAction(user._id, 'delete')}
+                >
                   Delete
                 </button>
               </td>

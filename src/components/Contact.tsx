@@ -21,7 +21,6 @@ export function Contact() {
         phone: '',
         message: '',
       });
-
     } catch (error: any) {
       setError(error.response?.data?.message || 'Error creating contact');
     }

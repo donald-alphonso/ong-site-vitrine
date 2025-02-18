@@ -33,14 +33,14 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               to="/admin/users"
               className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
-               <span className="mr-3">👤</span>
+              <span className="mr-3">👤</span>
               Utilisateur
             </Link>
             <Link
               to="/admin/contacts"
               className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
-               <span className="mr-3">📧</span>
+              <span className="mr-3">📧</span>
               Contacts
             </Link>
           </nav>

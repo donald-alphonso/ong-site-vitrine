@@ -4,7 +4,7 @@ import ProtectedRoute from '../routes/ProtectedRoute';
 import { AdminLayout } from './components/AdminLayout';
 import Dashboard from './pages/Dashboard';
 import UserTable from './components/UserTable';
-import  ContactTable  from './components/ContactTable';
+import ContactTable from './components/ContactTable';
 
 export function AdminRoutes() {
   return (
