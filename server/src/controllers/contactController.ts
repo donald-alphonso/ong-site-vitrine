@@ -45,7 +45,6 @@ export const sendContactMail = async () => {
 };
 
 export const deleteContact = async (req: Request, res: Response) => {
-  console.log(req.params);
   const { id } = req.params;
   try {
     const contact = await Contact.findByIdAndDelete(id);
@@ -63,7 +62,6 @@ export const deleteContact = async (req: Request, res: Response) => {
 export const updateContact = async (req: Request, res: Response) => {
   const { id } = req.params;
   const data = req.body;
-  console.log(data);
   if (!data) {
     res.status(400).json({ message: 'No data provided for update' });
     return;
@@ -73,7 +71,6 @@ export const updateContact = async (req: Request, res: Response) => {
     if (contact) {
       if (data.status) contact.status = data.status;
       if (data.notes) contact.notes = data.notes;
-      console.log(contact);
       await contact.save();
 
       res.status(200).json({ message: 'Updated sucessfully', contact });

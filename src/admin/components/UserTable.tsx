@@ -97,39 +97,41 @@ const UserTable: React.FC = () => {
                 >
                   {user.isOnline === false ? 'Offline' : 'Online'}  
                 </div>
-                <div>
-                  {user.lastLogin && (
-                    <span className="text-gray-500 text-xs">
+                <div className="text-gray-500 text-xs">
                       Last login: {user.lastLogin.toLocaleString()}
-                    </span>
-                  )}
                 </div>
               </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              <td className="px-2 py-4 whitespace-no-wrap border-b border-gray-200">
+                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                  user.role === 'user' ? 'bg-yellow-100 text-yellow-800' : 'bg-blue-100 text-blue-800'
+                }` }>
                 {user.role}
+                </span>
               </td>
-              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 flex justify-start gap-2">
-                {user.role !== 'admin' ? (
+              <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+                <div className='space-x-2'>
+                  {user.role !== 'admin' ? (
+                    <button
+                      className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:text-blue-900 transition duration-200 ease-in-out'
+                      onClick={() => handleAction(user._id, 'promote')}
+                    >
+                      Promote
+                    </button>
+                  ) : (
+                    <button
+                      className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 hover:text-yellow-900 transition duration-200 ease-in-out'
+                      onClick={() => handleAction(user._id, 'demote')}
+                    >
+                      Demote
+                    </button>
+                  )}
                   <button
-                    className="text-green-600 hover:text-green-900"
-                    onClick={() => handleAction(user._id, 'promote')}
+                    className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-600 hover:text-red-900 transition duration-200 ease-in-out"
+                    onClick={() => handleAction(user._id, 'delete')}
                   >
-                    Promote
+                    Delete
                   </button>
-                ) : (
-                  <button
-                    className="text-orange-600 hover:text-orange-900"
-                    onClick={() => handleAction(user._id, 'demote')}
-                  >
-                    Demote
-                  </button>
-                )}
-                <button
-                  className="text-red-600 hover:text-red-900"
-                  onClick={() => handleAction(user._id, 'delete')}
-                >
-                  Delete
-                </button>
+                </div>
               </td>
             </tr>
           ))}

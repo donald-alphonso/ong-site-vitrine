@@ -21,6 +21,7 @@ const ContactTable: React.FC = () => {
   const fetchContacts = async () => {
     try {
       const response = await api.get('/admin/contacts');
+      console.log('response', response);
       setContacts(response.data);
     } catch (error) {
       console.error('Error fecthing contacts:', error);
@@ -39,7 +40,8 @@ const ContactTable: React.FC = () => {
       const method = action === 'delete' ? 'delete' : 'patch';
       if (action === 'update' && contact) {
         await api[method](url, contact);
-      } else {
+        setEditingContact(null);
+      } else if (action === 'delete') {
         await api[method](url);
       }
       alert(`Contact ${action}d successfully`);
