@@ -6,6 +6,7 @@ import auth from './routes/auth';
 import adminRoutes from './routes/adminRoutes';
 import contactRoutes from './routes/contactRoutes';
 import statRoutes from './routes/statRoutes';
+import { addUserContextToLogs, requestLogger } from './middleware/loggerMiddleware';
 dotenv.config();
 
 const app = express();
@@ -31,6 +32,10 @@ mongoose
   .connect(process.env.MONGO_URI || '', {})
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(err));
+
+  // Logger middleware
+app.use(addUserContextToLogs);
+app.use(requestLogger);
 
 app.use('/api/auth', auth);
 app.use('/api/admin', adminRoutes);
