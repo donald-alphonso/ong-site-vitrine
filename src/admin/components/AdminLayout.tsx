@@ -59,14 +59,42 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
               <span className="mr-3">👤</span>
-              Utilisateur
+              Utilisateurs
+            </Link>
+            <Link
+              to="/admin/missions"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span className="mr-3">🎯</span>
+              Missions
+            </Link>
+            <Link
+              to="/admin/programs"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span className="mr-3">📚</span>
+              Programmes
+            </Link>
+            <Link
+              to="/admin/testimonials"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span className="mr-3">💬</span>
+              Témoignages
+            </Link>
+            <Link
+              to="/admin/news"
+              className="flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+            >
+              <span className="mr-3">📰</span>
+              Actualités
             </Link>
           </nav>
 
           <div className="p-4">
             <button
               onClick={handleLogout}
-              className="w-full flex item-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
+              className="w-full flex items-center px-4 py-2 text-white hover:bg-red-700 rounded-lg"
             >
               <span className="mr-3">🚪</span>
               Déconnexion

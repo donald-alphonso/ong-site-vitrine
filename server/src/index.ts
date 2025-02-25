@@ -2,47 +2,42 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import auth from './routes/auth';
-import adminRoutes from './routes/adminRoutes';
+import missionRoutes from './routes/missionRoutes';
+import programRoutes from './routes/programRoutes';
+import testimonialRoutes from './routes/testimonialRoutes';
+import newsRoutes from './routes/newsRoutes';
 import contactRoutes from './routes/contactRoutes';
 import statRoutes from './routes/statRoutes';
-import { addUserContextToLogs, requestLogger } from './middleware/loggerMiddleware';
+import auth from './routes/auth';
+import adminRoutes from './routes/adminRoutes';
+
 dotenv.config();
 
 const app = express();
 
-// Middlewares
-app.use(
-  cors({
-    origin: 'http://localhost:3000', // Autorise votre frontend
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Autorise les en-têtes sensibles
-    allowedHeaders: ['Authorization', 'Content-Type'],
-  })
-);
+// Middleware
+app.use(cors());
 app.use(express.json());
-
-// Route de test
-app.get('/', (req, res) => {
-  res.send('Backend is running');
-});
+app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-mongoose
-  .connect(process.env.MONGO_URI || '', {})
+mongoose.connect(process.env.MONGO_URI || '', {})
   .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.log(err));
+  .catch((error) => console.error('MongoDB connection error:', error));
 
-  // Logger middleware
-app.use(addUserContextToLogs);
-app.use(requestLogger);
-
-app.use('/api/auth', auth);
-app.use('/api/admin', adminRoutes);
+// Routes
+app.use('/api/missions', missionRoutes);
+app.use('/api/programs', programRoutes);
+app.use('/api/testimonials', testimonialRoutes);
+app.use('/api/news', newsRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', statRoutes);
+app.use('/api/auth', auth);
+app.use('/api/admin', adminRoutes);
+
 
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

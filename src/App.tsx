@@ -10,7 +10,7 @@ import { Blog } from './components/Blog';
 import { Testimonials } from './components/Testimonials';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './admin/pages/Login';
-import { AdminRoutes } from './admin/AdminRoutes';
+import AdminRoutes from './admin/AdminRoutes';
 
 function App() {
   return (
