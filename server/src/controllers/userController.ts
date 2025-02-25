@@ -33,11 +33,16 @@ export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
+    console.log(req.body.email, email, user);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
+
+    user.isOnline = true;
+    user.lastLogin = new Date();
+    await user.save();
 
     // token JWT
     const token = jwt.sign(
@@ -59,6 +64,24 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error during login', error });
   }
 };
+
+export const logout = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id);
+
+    if (user) {
+      user.isOnline = false;
+      await user.save();
+
+      res.status(200).json({ message: 'User logged out successfully' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error logging out user', error });
+  }
+}
 
 export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -86,15 +109,14 @@ export const promoteUser = async (req: Request, res: Response) => {
         res.status(400).json({ message: 'User is already admin' });
         return;
       }
-  
+
       user.role = 'admin';
       await user.save();
-  
+
       res.status(200).json({ message: 'User promoted sucessfully', user });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
-
   } catch (error) {
     res.status(500).json({ message: 'Error promoting user', error });
   }
@@ -110,15 +132,14 @@ export const demoteUser = async (req: Request, res: Response) => {
         res.status(400).json({ message: 'User is already a regular user' });
         return;
       }
-  
+
       user.role = 'user';
       await user.save();
-  
+
       res.status(200).json({ message: 'User demoted sucessfully', user });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
-
   } catch (error) {
     res.status(500).json({ message: 'Error demoting user', error });
   }

@@ -1,15 +1,29 @@
+import api from '../utils/api';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 
 export function Contact() {
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: '',
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    try {
+      await api.post('/contact', formData);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+    } catch (error: any) {
+      setError(error.response?.data?.message || 'Error creating contact');
+    }
 
     console.log(formData);
   };
@@ -40,6 +54,11 @@ export function Contact() {
             </div>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                {error}
+              </div>
+            )}
             <div>
               <label
                 htmlFor="name"
@@ -72,6 +91,24 @@ export function Contact() {
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Telephone
+              </label>
+              <input
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"
+                type="telephone"
+                id="phone"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
                 }
                 required
               />

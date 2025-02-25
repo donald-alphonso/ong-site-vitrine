@@ -35,13 +35,16 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="text-gray-400 hover:text-white">
-                Témoignages
+                <a
+                  href="#testimonials"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Témoignages
                 </a>
               </li>
               <li>
                 <a href="#blog" className="text-gray-400 hover:text-white">
-                Blog
+                  Blog
                 </a>
               </li>
               <li>

@@ -5,8 +5,10 @@ interface IUser extends Document {
   email: string;
   password: string;
   role: string;
+  isOnline: boolean;
   createdAt: Date;
   updatedAt: Date;
+  lastLogin: Date;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -28,6 +30,10 @@ const UserSchema = new Schema<IUser>({
     enum: ['admin', 'user'],
     default: 'user',
   },
+  isOnline: {
+    type: Boolean,
+    default: false
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -36,6 +42,10 @@ const UserSchema = new Schema<IUser>({
     type: Date,
     default: Date.now,
   },
+  lastLogin: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 export default mongoose.model<IUser>('User', UserSchema);
