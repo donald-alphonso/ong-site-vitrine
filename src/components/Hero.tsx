@@ -1,6 +1,13 @@
 import React from 'react';
 
 export function Hero() {
+  const handleLearnMore = () => {
+    const missionSection = document.getElementById('mission');
+    if (missionSection) {
+      missionSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div id="home" className="relative h-screen">
       <div
@@ -19,11 +26,11 @@ export function Hero() {
             Ensemble, construisons un avenir meilleur pour les orphelins à
             travers l'amour, l'éducation et le soutien.
           </p>
-          <div className="space-x-4 animate-fade-in delay-500">
-            <button className="bg-red-500 text-white px-8 py-3 rounded-md transition-all duration-300 transform hover:bg-red-600 hover:scale-105 hover:shadow-lg active:scale-95">
-              Faire un don
-            </button>
-            <button className="bg-white text-red-500 px-8 py-3 rounded-md transition-all duration-300 transform hover:bg-gray-100 hover:scale-105 hover:shadow-lg active:scale-95">
+          <div className="animate-fade-in delay-500">
+            <button 
+              onClick={handleLearnMore}
+              className="bg-white text-red-500 px-8 py-3 rounded-md transition-all duration-300 transform hover:bg-gray-100 hover:scale-105 hover:shadow-lg active:scale-95"
+            >
               En savoir plus
             </button>
           </div>

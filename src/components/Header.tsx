@@ -67,9 +67,6 @@ export function Header() {
               Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <button className="bg-red-500 text-white px-4 lg:px-6 py-2 rounded-md text-sm lg:text-base transition-all duration-300 transform hover:bg-red-600 hover:scale-105 hover:shadow-lg active:scale-95 whitespace-nowrap">
-              Faire un don
-            </button>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -146,11 +143,6 @@ export function Header() {
             >
               Contact
             </a>
-            <div className="mt-2 pb-2">
-              <button className="w-full bg-red-500 text-white px-4 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-red-600 hover:shadow-lg active:scale-95">
-                Faire un don
-              </button>
-            </div>
           </div>
         </div>
       </div>
