@@ -7,6 +7,7 @@ import './styles/globals.css';
 import { Mission } from './components/Mission';
 import { Programs } from './components/Programs';
 import { Contact } from './components/Contact';
+import { Gallery } from './components/Gallery';
 import { Blog } from './components/Blog';
 import { Testimonials } from './components/Testimonials';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -27,6 +28,7 @@ function App() {
                 <Hero />
                 <Mission />
                 <Programs />
+                <Gallery />
                 <Testimonials />
                 <Blog />
                 <Contact />
