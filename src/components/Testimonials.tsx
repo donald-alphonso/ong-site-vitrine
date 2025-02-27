@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Testimonial {
   id: number;
@@ -15,7 +15,7 @@ const testimonials: Testimonial[] = [
     role: 'Bénévole',
     content:
       'Travailler avec cette organisation a été une expérience incroyablement enrichissante. Voir le sourire sur le visage des enfants est la meilleure récompense possible.',
-    imageUrl: '/images/testimonials/volunteer1.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     role: 'Ancien bénéficiaire',
     content:
       "Grâce à leur soutien constant et leur accompagnement, j'ai pu poursuivre mes études et réaliser mes rêves. Aujourd'hui, je suis fier de pouvoir à mon tour aider d'autres jeunes.",
-    imageUrl: '/images/testimonials/beneficiary1.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
   },
   {
     id: 3,
@@ -31,20 +31,46 @@ const testimonials: Testimonial[] = [
     role: 'Partenaire',
     content:
       "La collaboration avec l'équipe est exceptionnelle. Leur professionnalisme et leur dévouement envers les enfants sont vraiment admirables.",
-    imageUrl: '/images/testimonials/partner1.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
   },
 ];
+
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState<'left' | 'right' | null>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const timer = setInterval(() => {
+      nextTestimonial();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const nextTestimonial = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection('right');
     setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const prevTestimonial = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length
-    );
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection('left');
+    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  const goToTestimonial = (index: number) => {
+    if (isTransitioning || index === activeIndex) return;
+    setIsTransitioning(true);
+    setDirection(index > activeIndex ? 'right' : 'left');
+    setActiveIndex(index);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   return (
@@ -54,28 +80,39 @@ export function Testimonials() {
           Témoignages
         </h2>
 
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <div className="flex items-center justify-center mb-8">
-            <img
-              src={testimonials[activeIndex].imageUrl}
-              alt={testimonials[activeIndex].name}
-              className="w-24 h-24 rounded-full object-cover border-4 border-red-500"
-            />
+            <div className="relative w-24 h-24">
+              <img
+                src={testimonials[activeIndex].imageUrl}
+                alt={testimonials[activeIndex].name}
+                className={`absolute w-24 h-24 rounded-full object-cover border-4 border-red-500 transition-all duration-500 ease-in-out transform
+                  ${isTransitioning ? (direction === 'right' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0') : 'translate-x-0 opacity-100'}
+                `}
+              />
+            </div>
           </div>
 
-          <div className="text-center">
-            <p className="text-xl text-gray-700 italic mb-6">
-              "{testimonials[activeIndex].content}"
-            </p>
-            <h3 className="text-lg font-semibold text-gray-900">
-              {testimonials[activeIndex].name}
-            </h3>
-            <p className="tex-red-500">{testimonials[activeIndex].role}</p>
+          <div className="text-center relative overflow-hidden">
+            <div className={`transition-all duration-500 ease-in-out transform
+              ${isTransitioning ? (direction === 'right' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0') : 'translate-x-0 opacity-100'}
+            `}>
+              <p className="text-xl text-gray-700 italic mb-6">
+                "{testimonials[activeIndex].content}"
+              </p>
+              <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-300">
+                {testimonials[activeIndex].name}
+              </h3>
+              <p className="text-red-500 transition-colors duration-300">
+                {testimonials[activeIndex].role}
+              </p>
+            </div>
           </div>
 
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100"
+            disabled={isTransitioning}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg
               className="w-6 h-6 text-gray-600"
@@ -91,9 +128,11 @@ export function Testimonials() {
               />
             </svg>
           </button>
+
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100"
+            disabled={isTransitioning}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg
               className="w-6 h-6 text-gray-600"
@@ -111,12 +150,16 @@ export function Testimonials() {
           </button>
         </div>
 
-        <div className="flex justify-center mt-6 space-x-2">
+        <div className="flex justify-center mt-6 space-x-3">
           {testimonials.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-3 h-3 rounded-full ${index === activeIndex ? 'bg-red-500' : 'bg-gray-300'}`}
+              onClick={() => goToTestimonial(index)}
+              disabled={isTransitioning}
+              className={`w-3 h-3 rounded-full transition-all duration-300 transform hover:scale-125
+                ${index === activeIndex ? 'bg-red-500 scale-110' : 'bg-gray-300'}
+                ${isTransitioning ? 'cursor-not-allowed' : 'cursor-pointer'}
+              `}
             />
           ))}
         </div>
