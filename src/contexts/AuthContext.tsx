@@ -20,9 +20,13 @@ interface JWTPayload {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<{ userId: string; role: string; } | null>(null);
+  const [user, setUser] = useState<{ userId: string; role: string } | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState(true); // Nouvel état pour gérer le chargement
 
   useEffect(() => {
@@ -32,12 +36,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
           const decoded = jwtDecode<JWTPayload>(token);
           const currentTime = Date.now() / 1000;
-          
+
           if (decoded.exp > currentTime) {
             setIsAuthenticated(true);
             setUser({
               userId: decoded.userId,
-              role: decoded.role
+              role: decoded.role,
             });
           } else {
             // Token expiré
@@ -65,7 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsAuthenticated(true);
       setUser({
         userId: decoded.userId,
-        role: decoded.role
+        role: decoded.role,
       });
     } catch (error) {
       console.error('Erreur lors du décodage du token:', error);
@@ -85,7 +89,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, isLoading }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, user, login, logout, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -93,9 +99,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  console.log('context',context);
   if (context === undefined) {
-    throw new Error('useAuth doit être utilisé à l\'intérieur d\'un AuthProvider');
+    throw new Error(
+      "useAuth doit être utilisé à l'intérieur d'un AuthProvider"
+    );
   }
   return context;
 };

@@ -26,12 +26,16 @@ const ProgramSchema: Schema = new Schema(
     image: {
       type: String,
     },
-    objectives: [{
-      type: String,
-    }],
-    benefits: [{
-      type: String,
-    }],
+    objectives: [
+      {
+        type: String,
+      },
+    ],
+    benefits: [
+      {
+        type: String,
+      },
+    ],
     isActive: {
       type: Boolean,
       default: true,

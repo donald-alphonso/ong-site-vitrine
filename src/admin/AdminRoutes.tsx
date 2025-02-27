@@ -9,19 +9,29 @@ import TestimonialsPage from './pages/TestimonialsPage';
 import NewsPage from './pages/NewsPage';
 import { useAuth } from '../contexts/AuthContext';
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-  
-  // Afficher un indicateur de chargement pendant la vérification
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  requireAdmin?: boolean;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
+  children,
+  requireAdmin = false,
+}) => {
+  const { isAuthenticated, isLoading, user } = useAuth();
+
   if (isLoading) {
-    return <div>Chargement...</div>; // Ou votre composant de chargement personnalisé
+    return <div>Chargement...</div>;
   }
 
   if (!isAuthenticated) {
-    // Sauvegarder l'URL actuelle avant la redirection
     const currentPath = window.location.pathname;
     sessionStorage.setItem('redirectPath', currentPath);
     return <Navigate to="/login" />;
+  }
+
+  if (requireAdmin && user?.role !== 'admin') {
+    return <Navigate to="/admin/dashboard" />;
   }
 
   return <>{children}</>;
@@ -51,46 +61,6 @@ const AdminRoutes = () => {
         }
       />
       <Route
-        path="/missions"
-        element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <MissionsPage />
-            </AdminLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/programs"
-        element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <ProgramsPage />
-            </AdminLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/testimonials"
-        element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <TestimonialsPage />
-            </AdminLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/news"
-        element={
-          <ProtectedRoute>
-            <AdminLayout>
-              <NewsPage />
-            </AdminLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
         path="/contacts"
         element={
           <ProtectedRoute>
@@ -101,16 +71,55 @@ const AdminRoutes = () => {
         }
       />
       <Route
+        path="/missions"
+        element={
+          <ProtectedRoute requireAdmin>
+            <AdminLayout>
+              <MissionsPage />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/programs"
+        element={
+          <ProtectedRoute requireAdmin>
+            <AdminLayout>
+              <ProgramsPage />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/testimonials"
+        element={
+          <ProtectedRoute requireAdmin>
+            <AdminLayout>
+              <TestimonialsPage />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/news"
+        element={
+          <ProtectedRoute requireAdmin>
+            <AdminLayout>
+              <NewsPage />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/users"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute requireAdmin>
             <AdminLayout>
               <UsersPage />
             </AdminLayout>
           </ProtectedRoute>
         }
       />
-      <Route path="*" element={<Navigate to="/admin/dashboard" />} />
     </Routes>
   );
 };

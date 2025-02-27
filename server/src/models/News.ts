@@ -35,10 +35,12 @@ const NewsSchema: Schema = new Schema(
       type: String,
       required: [true, "Le nom de l'auteur est requis"],
     },
-    tags: [{
-      type: String,
-      trim: true,
-    }],
+    tags: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
     isPublished: {
       type: Boolean,
       default: false,

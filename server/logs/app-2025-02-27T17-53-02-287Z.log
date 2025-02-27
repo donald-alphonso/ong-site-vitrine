@@ -1,0 +1,56 @@
+{"timestamp":"2025-02-27T17:53:21.986Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:53:21.987Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:53:21.997Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:53:22.002Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:53:22.002Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:53:22.010Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:53:22.012Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:53:22.011Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:53:22.018Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:53:22.022Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:53:22.026Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:53:22.027Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:53:22.027Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:53:22.030Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:18.880Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:18.881Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:18.886Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:18.887Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:18.909Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:18.912Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:19.044Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:19.045Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:19.046Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:19.050Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:19.052Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:19.053Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:19.056Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:19.062Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:26.577Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.578Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:26.585Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:26.591Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.591Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:26.600Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:26.669Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.670Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.671Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:26.677Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:26.682Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.684Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:26.683Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:26.687Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:41.493Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.493Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:41.500Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:41.503Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.504Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T17:56:41.510Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.511Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:41.510Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.515Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T17:56:41.520Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.521Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T17:56:41.524Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T17:56:41.522Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T17:56:41.528Z","level":"INFO","message":"Successfully retrieved 2 contacts"}

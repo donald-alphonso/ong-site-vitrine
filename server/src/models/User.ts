@@ -32,7 +32,7 @@ const UserSchema = new Schema<IUser>({
   },
   isOnline: {
     type: Boolean,
-    default: false
+    default: false,
   },
   createdAt: {
     type: Date,
@@ -44,8 +44,8 @@ const UserSchema = new Schema<IUser>({
   },
   lastLogin: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 export default mongoose.model<IUser>('User', UserSchema);

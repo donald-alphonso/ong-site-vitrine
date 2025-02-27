@@ -20,9 +20,7 @@ const UsersPage: React.FC = () => {
       <UserTable />
 
       {isModalOpen && (
-        <UserCreateModal
-          onUserCreated={() => setIsModalOpen(false)}
-        />
+        <UserCreateModal onUserCreated={() => setIsModalOpen(false)} />
       )}
     </div>
   );

@@ -44,7 +44,9 @@ const NewsTable: React.FC = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette actualité ?')) {
+    if (
+      window.confirm('Êtes-vous sûr de vouloir supprimer cette actualité ?')
+    ) {
       try {
         await api.delete(`/news/${id}`);
         fetchNews();
@@ -107,13 +109,17 @@ const NewsTable: React.FC = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             {news.map((newsItem) => (
               <tr key={newsItem._id}>
-                <td className="px-6 py-4 whitespace-nowrap">{newsItem.title}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {newsItem.title}
+                </td>
                 <td className="px-6 py-4">
                   {newsItem.summary.length > 100
                     ? `${newsItem.summary.substring(0, 100)}...`
                     : newsItem.summary}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{newsItem.author}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {newsItem.author}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {new Date(newsItem.publishDate).toLocaleDateString()}
                 </td>

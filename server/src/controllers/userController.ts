@@ -81,7 +81,7 @@ export const logout = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ message: 'Error logging out user', error });
   }
-}
+};
 
 export const deleteUser = async (req: Request, res: Response) => {
   const { id } = req.params;

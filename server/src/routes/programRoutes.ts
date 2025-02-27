@@ -4,7 +4,7 @@ import {
   getProgram,
   createProgram,
   updateProgram,
-  deleteProgram
+  deleteProgram,
 } from '../controllers/programController';
 import { isAdmin, protect } from '../middleware/authMiddleware';
 

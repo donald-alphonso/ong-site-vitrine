@@ -89,37 +89,41 @@ const UserTable: React.FC = () => {
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div
-                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ${
-                  user.isOnline === false
-                    ? 'bg-yellow-100 text-yellow-800'
-                    : 'bg-green-100 text-green-800'
-                }`}
+                  className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ${
+                    user.isOnline === false
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : 'bg-green-100 text-green-800'
+                  }`}
                 >
-                  {user.isOnline === false ? 'Offline' : 'Online'}  
+                  {user.isOnline === false ? 'Offline' : 'Online'}
                 </div>
                 <div className="text-gray-500 text-xs">
-                      Last login: {user.lastLogin.toLocaleString()}
+                  Last login: {user.lastLogin.toLocaleString()}
                 </div>
               </td>
               <td className="px-2 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                  user.role === 'user' ? 'bg-yellow-100 text-yellow-800' : 'bg-blue-100 text-blue-800'
-                }` }>
-                {user.role}
+                <span
+                  className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    user.role === 'user'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : 'bg-blue-100 text-blue-800'
+                  }`}
+                >
+                  {user.role}
                 </span>
               </td>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
-                <div className='space-x-2'>
+                <div className="space-x-2">
                   {user.role !== 'admin' ? (
                     <button
-                      className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:text-blue-900 transition duration-200 ease-in-out'
+                      className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 hover:text-blue-900 transition duration-200 ease-in-out"
                       onClick={() => handleAction(user._id, 'promote')}
                     >
                       Promote
                     </button>
                   ) : (
                     <button
-                      className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 hover:text-yellow-900 transition duration-200 ease-in-out'
+                      className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 hover:text-yellow-900 transition duration-200 ease-in-out"
                       onClick={() => handleAction(user._id, 'demote')}
                     >
                       Demote

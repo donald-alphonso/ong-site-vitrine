@@ -8,7 +8,7 @@ import {
   logout,
   deleteUser,
   promoteUser,
-  demoteUser
+  demoteUser,
 } from '../controllers/userController';
 
 const router = express.Router();
