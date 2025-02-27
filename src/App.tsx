@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import './App.css';
+import './styles/globals.css';
 import { Mission } from './components/Mission';
 import { Programs } from './components/Programs';
 import { Contact } from './components/Contact';
@@ -11,6 +12,7 @@ import { Testimonials } from './components/Testimonials';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './admin/pages/Login';
 import AdminRoutes from './admin/AdminRoutes';
+import BlogPost from './components/BlogPost';
 
 function App() {
   return (
@@ -34,6 +36,16 @@ function App() {
           />
           <Route path="/admin/*" element={<AdminRoutes />} />
           <Route path="/login" element={<Login />} />
+          <Route 
+            path="/blog/:id" 
+            element={
+              <>
+                <Header />
+                <BlogPost />
+                <Footer />
+              </>
+            } 
+          />
         </Routes>
       </div>
     </Router>
