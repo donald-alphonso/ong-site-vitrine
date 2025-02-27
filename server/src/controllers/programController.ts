@@ -7,7 +7,12 @@ export const getAllPrograms = async (req: Request, res: Response) => {
     const programs = await Program.find({ isActive: true }).sort('order');
     res.status(200).json(programs);
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la récupération des programmes', error });
+    res
+      .status(500)
+      .json({
+        message: 'Erreur lors de la récupération des programmes',
+        error,
+      });
   }
 };
 
@@ -21,7 +26,9 @@ export const getProgram = async (req: Request, res: Response) => {
     }
     res.status(200).json(program);
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la récupération du programme', error });
+    res
+      .status(500)
+      .json({ message: 'Erreur lors de la récupération du programme', error });
   }
 };
 
@@ -32,25 +39,28 @@ export const createProgram = async (req: Request, res: Response) => {
     await program.save();
     res.status(201).json(program);
   } catch (error) {
-    res.status(400).json({ message: 'Erreur lors de la création du programme', error });
+    res
+      .status(400)
+      .json({ message: 'Erreur lors de la création du programme', error });
   }
 };
 
 // Update program
 export const updateProgram = async (req: Request, res: Response) => {
   try {
-    const program = await Program.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    const program = await Program.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!program) {
       res.status(404).json({ message: 'Programme non trouvé' });
       return;
     }
     res.status(200).json(program);
   } catch (error) {
-    res.status(400).json({ message: 'Erreur lors de la mise à jour du programme', error });
+    res
+      .status(400)
+      .json({ message: 'Erreur lors de la mise à jour du programme', error });
   }
 };
 
@@ -64,6 +74,8 @@ export const deleteProgram = async (req: Request, res: Response) => {
     }
     res.status(200).json({ message: 'Programme supprimé avec succès' });
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la suppression du programme', error });
+    res
+      .status(500)
+      .json({ message: 'Erreur lors de la suppression du programme', error });
   }
 };

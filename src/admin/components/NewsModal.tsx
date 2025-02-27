@@ -53,7 +53,8 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -104,14 +105,19 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
           <h2 className="text-xl font-bold">
             {news ? "Modifier l'Actualité" : 'Nouvelle Actualité'}
           </h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             <X size={24} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Titre</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Titre
+            </label>
             <input
               type="text"
               name="title"
@@ -123,7 +129,9 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Résumé</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Résumé
+            </label>
             <textarea
               name="summary"
               value={formData.summary}
@@ -135,7 +143,9 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Contenu</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Contenu
+            </label>
             <textarea
               name="content"
               value={formData.content}
@@ -160,7 +170,9 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Auteur</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Auteur
+            </label>
             <input
               type="text"
               name="author"
@@ -172,7 +184,9 @@ const NewsModal: React.FC<NewsModalProps> = ({ news, onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Tags
+            </label>
             {formData.tags.map((tag, index) => (
               <div key={index} className="flex gap-2 mb-2">
                 <input

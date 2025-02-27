@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import { X } from 'lucide-react';
+import IconSelector from './IconSelector';
 
 interface Mission {
   _id: string;
   title: string;
   description: string;
-  icon?: string;
-  order: number;
+  icon: string;
   isActive: boolean;
+  order: number;
 }
 
 interface MissionModalProps {
@@ -17,13 +18,17 @@ interface MissionModalProps {
   onSubmit: () => void;
 }
 
-const MissionModal: React.FC<MissionModalProps> = ({ mission, onClose, onSubmit }) => {
+const MissionModal: React.FC<MissionModalProps> = ({
+  mission,
+  onClose,
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    icon: '',
-    order: 0,
+    icon: 'Target',
     isActive: true,
+    order: 0,
   });
 
   useEffect(() => {
@@ -31,14 +36,16 @@ const MissionModal: React.FC<MissionModalProps> = ({ mission, onClose, onSubmit 
       setFormData({
         title: mission.title,
         description: mission.description,
-        icon: mission.icon || '',
-        order: mission.order,
+        icon: mission.icon,
         isActive: mission.isActive,
+        order: mission.order,
       });
     }
   }, [mission]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -49,13 +56,12 @@ const MissionModal: React.FC<MissionModalProps> = ({ mission, onClose, onSubmit 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log(mission,formData);
       if (mission) {
         await api.put(`/missions/${mission._id}`, formData);
       } else {
         await api.post('/missions', formData);
       }
-      // onSubmit();
+      onSubmit();
     } catch (error) {
       console.error('Error saving mission:', error);
     }
@@ -99,13 +105,12 @@ const MissionModal: React.FC<MissionModalProps> = ({ mission, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Icône (optionnel)</label>
-            <input
-              type="text"
-              name="icon"
-              value={formData.icon}
-              onChange={handleChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            <label className="block text-sm font-medium text-gray-700 mb-1">Icône</label>
+            <IconSelector
+              selectedIcon={formData.icon}
+              onSelectIcon={(iconName) =>
+                setFormData((prev) => ({ ...prev, icon: iconName }))
+              }
             />
           </div>
 
@@ -128,7 +133,7 @@ const MissionModal: React.FC<MissionModalProps> = ({ mission, onClose, onSubmit 
               onChange={handleChange}
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
-            <label className="ml-2 block text-sm text-gray-900">Actif</label>
+            <label className="ml-2 block text-sm text-gray-900">Active</label>
           </div>
 
           <div className="flex justify-end gap-4 mt-6">

@@ -20,7 +20,8 @@ const TestimonialTable: React.FC = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
+  const [editingTestimonial, setEditingTestimonial] =
+    useState<Testimonial | null>(null);
 
   const fetchTestimonials = async () => {
     try {
@@ -106,8 +107,12 @@ const TestimonialTable: React.FC = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             {testimonials.map((testimonial) => (
               <tr key={testimonial._id}>
-                <td className="px-6 py-4 whitespace-nowrap">{testimonial.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{testimonial.role || '-'}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {testimonial.name}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {testimonial.role || '-'}
+                </td>
                 <td className="px-6 py-4">
                   {testimonial.content.length > 100
                     ? `${testimonial.content.substring(0, 100)}...`

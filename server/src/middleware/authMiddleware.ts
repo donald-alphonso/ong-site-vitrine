@@ -31,19 +31,19 @@ export const protect = (
 
   try {
     const decoded = jwt.verify(
-      token, 
+      token,
       process.env.JWT_SECRET || ''
     ) as DecodedToken;
 
     req.user = decoded;
 
     // Ajouter l'email aux logs via le logger
-    logger.info('Request authenticated', { 
+    logger.info('Request authenticated', {
       userId: decoded.userId,
       email: decoded.email,
       role: decoded.role,
       path: req.path,
-      method: req.method
+      method: req.method,
     });
 
     next();
@@ -65,7 +65,7 @@ export const isAdmin = (
       email: user?.email,
       role: user?.role,
       path: req.path,
-      method: req.method
+      method: req.method,
     });
     res.status(403).json({ message: 'Admin access required' });
     return;
@@ -75,8 +75,8 @@ export const isAdmin = (
     userId: user.userId,
     email: user.email,
     path: req.path,
-    method: req.method
+    method: req.method,
   });
-  
+
   next();
 };

@@ -1,0 +1,50 @@
+{"timestamp":"2025-02-27T07:55:07.136Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:07.141Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:07.154Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:07.161Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:12.768Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:12.773Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:12.778Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:12.783Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:14.955Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:14.960Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:22.285Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:22.290Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:22.296Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:22.302Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:23.975Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:23.979Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:34.677Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:34.680Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:34.686Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:34.689Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:41.247Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T07:55:41.251Z","level":"ERROR","message":"Token authentication failed","errorMessage":{"name":"JsonWebTokenError","message":"jwt malformed"}}
+{"timestamp":"2025-02-27T08:01:03.927Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T08:01:03.927Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T08:01:03.960Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T08:01:03.964Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T08:01:03.964Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T08:01:03.972Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T08:01:04.055Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:04.056Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:04.057Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T08:01:04.063Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T08:01:04.069Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:04.070Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T08:01:04.070Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:04.076Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T08:01:05.651Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.652Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T08:01:05.662Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T08:01:05.666Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contactStats","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.667Z","level":"INFO","message":"Fetching contact statistics"}
+{"timestamp":"2025-02-27T08:01:05.682Z","level":"INFO","message":"Contact statistics retrieved successfully","totalContacts":2,"pendingCount":1,"contactedCount":1,"resolvedCount":0}
+{"timestamp":"2025-02-27T08:01:05.753Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.754Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T08:01:05.754Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.758Z","level":"INFO","message":"Successfully retrieved 2 contacts"}
+{"timestamp":"2025-02-27T08:01:05.764Z","level":"INFO","message":"Request authenticated","userId":"676fe292a2016bc86582bdb6","role":"admin","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.766Z","level":"INFO","message":"Admin access granted","userId":"676fe292a2016bc86582bdb6","path":"/contacts","method":"GET"}
+{"timestamp":"2025-02-27T08:01:05.767Z","level":"INFO","message":"User accessed contact list","action":"VIEW_ALL_CONTACTS","actor":{"userId":"676fe292a2016bc86582bdb6","role":"admin"}}
+{"timestamp":"2025-02-27T08:01:05.771Z","level":"INFO","message":"Successfully retrieved 2 contacts"}

@@ -16,27 +16,27 @@ export const logUserActions = (actionType: string) => {
     let statusCode: number;
 
     // Capture le status code
-    res.status = function(code: number) {
+    res.status = function (code: number) {
       statusCode = code;
       return oldStatus.apply(res, [code]);
     };
 
     // Intercepte la réponse pour logger le résultat
-    res.json = function(data: any) {
+    res.json = function (data: any) {
       const isSuccess = statusCode >= 200 && statusCode < 300;
       const logData = {
         action: actionType,
         actor: {
           userId: req.user?.userId,
           email: req.user?.email,
-          role: req.user?.role
+          role: req.user?.role,
         },
         targetData: {
           ...req.params,
-          ...req.body
+          ...req.body,
         },
         statusCode,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       switch (actionType) {
@@ -44,7 +44,7 @@ export const logUserActions = (actionType: string) => {
           if (isSuccess) {
             logger.info('Users list retrieved successfully', {
               ...logData,
-              userCount: Array.isArray(data) ? data.length : 0
+              userCount: Array.isArray(data) ? data.length : 0,
             });
           } else {
             logger.error('Failed to retrieve users list', null, logData);
@@ -58,13 +58,13 @@ export const logUserActions = (actionType: string) => {
               newUser: {
                 id: data._id,
                 email: data.email,
-                role: data.role
-              }
+                role: data.role,
+              },
             });
           } else {
             logger.error('Failed to create user', null, {
               ...logData,
-              attemptedEmail: req.body.email
+              attemptedEmail: req.body.email,
             });
           }
           break;
@@ -76,13 +76,13 @@ export const logUserActions = (actionType: string) => {
               user: {
                 id: data.user?.id,
                 email: data.user?.email,
-                role: data.user?.role
-              }
+                role: data.user?.role,
+              },
             });
           } else {
             logger.warn('Login failed', {
               ...logData,
-              attemptedEmail: req.body.email
+              attemptedEmail: req.body.email,
             });
           }
           break;
@@ -91,12 +91,12 @@ export const logUserActions = (actionType: string) => {
           if (isSuccess) {
             logger.info('User logged out successfully', {
               ...logData,
-              userId: req.params.id
+              userId: req.params.id,
             });
           } else {
             logger.error('Logout failed', null, {
               ...logData,
-              userId: req.params.id
+              userId: req.params.id,
             });
           }
           break;
@@ -105,12 +105,12 @@ export const logUserActions = (actionType: string) => {
           if (isSuccess) {
             logger.info('User deleted successfully', {
               ...logData,
-              deletedUserId: req.params.id
+              deletedUserId: req.params.id,
             });
           } else {
             logger.error('Failed to delete user', null, {
               ...logData,
-              targetUserId: req.params.id
+              targetUserId: req.params.id,
             });
           }
           break;
@@ -122,13 +122,13 @@ export const logUserActions = (actionType: string) => {
               promotedUser: {
                 id: data.user?._id,
                 email: data.user?.email,
-                newRole: 'admin'
-              }
+                newRole: 'admin',
+              },
             });
           } else {
             logger.error('Failed to promote user', null, {
               ...logData,
-              targetUserId: req.params.id
+              targetUserId: req.params.id,
             });
           }
           break;
@@ -140,13 +140,13 @@ export const logUserActions = (actionType: string) => {
               demotedUser: {
                 id: data.user?._id,
                 email: data.user?.email,
-                newRole: 'user'
-              }
+                newRole: 'user',
+              },
             });
           } else {
             logger.error('Failed to demote user', null, {
               ...logData,
-              targetUserId: req.params.id
+              targetUserId: req.params.id,
             });
           }
           break;

@@ -49,7 +49,9 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
   }, [testimonial]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
@@ -58,8 +60,8 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
         type === 'checkbox'
           ? (e.target as HTMLInputElement).checked
           : type === 'number'
-          ? parseInt(value)
-          : value,
+            ? parseInt(value)
+            : value,
     }));
   };
 
@@ -84,14 +86,19 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
           <h2 className="text-xl font-bold">
             {testimonial ? 'Modifier le Témoignage' : 'Nouveau Témoignage'}
           </h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             <X size={24} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nom</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Nom
+            </label>
             <input
               type="text"
               name="name"
@@ -116,7 +123,9 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Témoignage</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Témoignage
+            </label>
             <textarea
               name="content"
               value={formData.content}
@@ -141,7 +150,9 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Note</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Note
+            </label>
             <select
               name="rating"
               value={formData.rating}
@@ -157,7 +168,9 @@ const TestimonialModal: React.FC<TestimonialModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Ordre</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Ordre
+            </label>
             <input
               type="number"
               name="order"

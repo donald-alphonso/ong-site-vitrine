@@ -1,6 +1,5 @@
 import ProgramTable from '../components/ProgramTable';
 
-
 const ProgramsPage: React.FC = () => {
   return (
     <div>

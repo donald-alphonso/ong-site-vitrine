@@ -21,7 +21,6 @@ const ContactTable: React.FC = () => {
   const fetchContacts = async () => {
     try {
       const response = await api.get('/admin/contacts');
-      console.log('response', response);
       setContacts(response.data);
     } catch (error) {
       console.error('Error fecthing contacts:', error);

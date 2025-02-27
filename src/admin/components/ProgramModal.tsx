@@ -19,7 +19,11 @@ interface ProgramModalProps {
   onSubmit: () => void;
 }
 
-const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit }) => {
+const ProgramModal: React.FC<ProgramModalProps> = ({
+  program,
+  onClose,
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -44,11 +48,14 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
     }
   }, [program]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -104,14 +111,19 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           <h2 className="text-xl font-bold">
             {program ? 'Modifier le Programme' : 'Nouveau Programme'}
           </h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             <X size={24} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Titre</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Titre
+            </label>
             <input
               type="text"
               name="title"
@@ -123,7 +135,9 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Description</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
             <textarea
               name="description"
               value={formData.description}
@@ -135,7 +149,9 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Image URL (optionnel)</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Image URL (optionnel)
+            </label>
             <input
               type="text"
               name="image"
@@ -146,13 +162,17 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Objectifs</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Objectifs
+            </label>
             {formData.objectives.map((objective, index) => (
               <div key={index} className="flex gap-2 mb-2">
                 <input
                   type="text"
                   value={objective}
-                  onChange={(e) => handleArrayChange(index, e.target.value, 'objectives')}
+                  onChange={(e) =>
+                    handleArrayChange(index, e.target.value, 'objectives')
+                  }
                   className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Objectif"
                 />
@@ -175,13 +195,17 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Bénéfices</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Bénéfices
+            </label>
             {formData.benefits.map((benefit, index) => (
               <div key={index} className="flex gap-2 mb-2">
                 <input
                   type="text"
                   value={benefit}
-                  onChange={(e) => handleArrayChange(index, e.target.value, 'benefits')}
+                  onChange={(e) =>
+                    handleArrayChange(index, e.target.value, 'benefits')
+                  }
                   className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Bénéfice"
                 />
@@ -204,7 +228,9 @@ const ProgramModal: React.FC<ProgramModalProps> = ({ program, onClose, onSubmit 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Ordre</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Ordre
+            </label>
             <input
               type="number"
               name="order"

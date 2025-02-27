@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Contact from '../models/Contact';
 import { logger } from '../utils/logger';
-import  nodemailer  from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 interface AuthRequest extends Request {
   user?: {
@@ -18,8 +18,8 @@ export const getAllContacts = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
-      }
+        role: req.user?.role,
+      },
     });
 
     const contacts = await Contact.find().sort({ createdAt: -1 });
@@ -31,8 +31,8 @@ export const getAllContacts = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
-      }
+        role: req.user?.role,
+      },
     });
     res.status(500).json({ message: 'Error retrieving contacts', error });
   }
@@ -46,14 +46,14 @@ export const createContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
       contactData: {
         name,
         email,
         phone,
-        message
-      }
+        message,
+      },
     });
 
     const newContact = new Contact({ name, email, phone, message });
@@ -64,12 +64,12 @@ export const createContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
       contact: {
         id: newContact._id,
-        email: newContact.email
-      }
+        email: newContact.email,
+      },
     });
 
     res.status(201).json(newContact);
@@ -79,9 +79,9 @@ export const createContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
-      contactData: req.body
+      contactData: req.body,
     });
     res.status(500).json({ message: 'Error creating contact', error });
   }
@@ -89,7 +89,7 @@ export const createContact = async (req: AuthRequest, res: Response) => {
 
 export const sendContactMail = async (req: AuthRequest, res: Response) => {
   logger.info('Attempting to send contact notification email');
-  
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -116,27 +116,27 @@ export const sendContactMail = async (req: AuthRequest, res: Response) => {
 export const updateContact = async (req: AuthRequest, res: Response) => {
   const { id } = req.params;
   const data = req.body;
-  
+
   if (!data) {
     logger.warn('Update attempt with no data provided', { contactId: id });
     res.status(400).json({ message: 'No data provided for update' });
     return;
   }
-  
+
   try {
     logger.info('User attempting to update contact', {
       action: 'UPDATE_CONTACT',
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
       updateData: {
         contactId: id,
-        changes: data
-      }
+        changes: data,
+      },
     });
-    
+
     const contact = await Contact.findById(id);
     if (contact) {
       if (data.status) contact.status = data.status;
@@ -148,15 +148,15 @@ export const updateContact = async (req: AuthRequest, res: Response) => {
         actor: {
           userId: req.user?.userId,
           email: req.user?.email,
-          role: req.user?.role
+          role: req.user?.role,
         },
         contact: {
           id: contact._id,
           email: contact.email,
-          status: contact.status
-        }
+          status: contact.status,
+        },
       });
-      
+
       res.status(200).json({ message: 'Updated successfully', contact });
     } else {
       logger.warn('Attempt to update non-existent contact', { contactId: id });
@@ -168,9 +168,9 @@ export const updateContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
-      contactId: id
+      contactId: id,
     });
     res.status(500).json({ message: 'Error updating contact', error });
   }
@@ -184,11 +184,11 @@ export const deleteContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
-      contactId: id
+      contactId: id,
     });
-    
+
     const contact = await Contact.findByIdAndDelete(id);
 
     if (!contact) {
@@ -201,12 +201,12 @@ export const deleteContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
       deletedContact: {
         id: contact?._id,
-        email: contact?.email
-      }
+        email: contact?.email,
+      },
     });
     res.status(200).json({ message: 'Contact deleted successfully' });
   } catch (error) {
@@ -215,9 +215,9 @@ export const deleteContact = async (req: AuthRequest, res: Response) => {
       actor: {
         userId: req.user?.userId,
         email: req.user?.email,
-        role: req.user?.role
+        role: req.user?.role,
       },
-      contactId: id
+      contactId: id,
     });
     res.status(500).json({ message: 'Error deleting contact', error });
   }

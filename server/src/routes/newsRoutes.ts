@@ -5,7 +5,7 @@ import {
   createNewsArticle,
   updateNewsArticle,
   deleteNewsArticle,
-  getLatestNews
+  getLatestNews,
 } from '../controllers/newsController';
 import { protect, isAdmin } from '../middleware/authMiddleware';
 

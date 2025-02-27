@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import api from '../../utils/api';
-import { Edit, Trash2, Plus } from 'lucide-react';
+import { Edit, Trash2, Plus, LucideProps } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import MissionModal from './MissionModal';
 
 interface Mission {
   _id: string;
   title: string;
   description: string;
-  icon?: string;
-  order: number;
+  icon: string;
   isActive: boolean;
+  order: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -67,7 +68,8 @@ const MissionTable: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-end items-center mb-4">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Gestion des Missions</h2>
         <button
           onClick={() => setIsModalOpen(true)}
           className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center gap-2"
@@ -81,6 +83,9 @@ const MissionTable: React.FC = () => {
         <table className="min-w-full">
           <thead className="bg-gray-50">
             <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Icône
+              </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Titre
               </th>
@@ -99,42 +104,48 @@ const MissionTable: React.FC = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {missions.map((mission) => (
-              <tr key={mission._id}>
-                <td className="px-6 py-4 whitespace-nowrap">{mission.title}</td>
-                <td className="px-6 py-4">
-                  {mission.description.length > 100
-                    ? `${mission.description.substring(0, 100)}...`
-                    : mission.description}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">{mission.order}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                      mission.isActive
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-red-100 text-red-800'
-                    }`}
-                  >
-                    {mission.isActive ? 'Actif' : 'Inactif'}
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button
-                    onClick={() => handleEdit(mission)}
-                    className="text-blue-600 hover:text-blue-900 mr-4"
-                  >
-                    <Edit size={20} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(mission._id)}
-                    className="text-red-600 hover:text-red-900"
-                  >
-                    <Trash2 size={20} />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {missions.map((mission) => {
+              const Icon = LucideIcons[mission.icon as keyof typeof LucideIcons] as React.FC<LucideProps> || LucideIcons.HelpCircle;
+              return (
+                <tr key={mission._id}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <Icon size={24} />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{mission.title}</td>
+                  <td className="px-6 py-4">
+                    {mission.description.length > 100
+                      ? `${mission.description.substring(0, 100)}...`
+                      : mission.description}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{mission.order}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        mission.isActive
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-red-100 text-red-800'
+                      }`}
+                    >
+                      {mission.isActive ? 'Active' : 'Inactive'}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button
+                      onClick={() => handleEdit(mission)}
+                      className="text-blue-600 hover:text-blue-900 mr-4"
+                    >
+                      <Edit size={20} />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(mission._id)}
+                      className="text-red-600 hover:text-red-900"
+                    >
+                      <Trash2 size={20} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

@@ -4,7 +4,7 @@ import {
   getMission,
   createMission,
   updateMission,
-  deleteMission
+  deleteMission,
 } from '../controllers/missionController';
 import { protect } from '../middleware/authMiddleware';
 import { isAdmin } from '../middleware/authMiddleware';

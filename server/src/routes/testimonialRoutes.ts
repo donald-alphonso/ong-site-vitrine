@@ -4,7 +4,7 @@ import {
   getTestimonial,
   createTestimonial,
   updateTestimonial,
-  deleteTestimonial
+  deleteTestimonial,
 } from '../controllers/testimonialController';
 import { isAdmin, protect } from '../middleware/authMiddleware';
 

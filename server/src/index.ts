@@ -21,7 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-mongoose.connect(process.env.MONGO_URI || '', {})
+mongoose
+  .connect(process.env.MONGO_URI || '', {})
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('MongoDB connection error:', error));
 
@@ -34,7 +35,6 @@ app.use('/api', contactRoutes);
 app.use('/api', statRoutes);
 app.use('/api/auth', auth);
 app.use('/api/admin', adminRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 
