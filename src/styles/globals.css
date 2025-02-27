@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animations de base */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Transitions globales */
+* {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Animations de défilement fluide */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Effet de survol global pour les boutons */
+button, 
+.btn {
+  @apply transform transition-all duration-300 hover:scale-105 active:scale-95;
+}
+
+/* Effet de survol pour les cartes */
+.card {
+  @apply transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Animation de pulse personnalisée */
+.pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Transitions pour les images */
+img {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Animation pour le chargement */
+.loading {
+  @apply animate-spin;
+}
+
+/* Effet de soulignement au survol */
+.hover-underline {
+  @apply relative;
+}
+
+.hover-underline::after {
+  @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300;
+}
+
+.hover-underline:hover::after {
+  @apply w-full;
+}
+
+/* Animation de rebond */
+.bounce-hover:hover {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Effet de flou au survol */
+.blur-hover {
+  @apply transition-all duration-300;
+}
+
+.blur-hover:hover {
+  @apply blur-sm;
+}
+
+/* Animation de rotation */
+.rotate-hover:hover {
+  @apply rotate-3;
+}
+
+/* Effet d'échelle au focus pour les inputs */
+input:focus, 
+textarea:focus {
+  @apply transform scale-[1.02] outline-none ring-2 ring-red-500 ring-opacity-50;
+}
+
+/* Animation de secoue pour les erreurs */
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Animation de défilement infini */
+.scroll-infinite {
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Effet de parallaxe */
+.parallax {
+  @apply relative overflow-hidden;
+}
+
+.parallax > * {
+  @apply transition-transform duration-500 ease-out;
+}
+
+/* Animation de fondu pour les modales */
+.modal-enter {
+  @apply opacity-0;
+  animation: modalEnter 0.3s ease-out forwards;
+}
+
+@keyframes modalEnter {
+  to {
+    @apply opacity-100;
+  }
+}
+
+/* Animation de sortie pour les modales */
+.modal-exit {
+  @apply opacity-100;
+  animation: modalExit 0.3s ease-in forwards;
+}
+
+@keyframes modalExit {
+  to {
+    @apply opacity-0;
+  }
+}
