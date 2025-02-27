@@ -14,11 +14,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './admin/pages/Login';
 import AdminRoutes from './admin/AdminRoutes';
 import BlogPost from './components/BlogPost';
+import { SocialButtons } from './components/SocialButtons';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App relative">
         <Routes>
           <Route
             path="/"
@@ -33,6 +34,10 @@ function App() {
                 <Blog />
                 <Contact />
                 <Footer />
+                <SocialButtons 
+                  whatsappNumber="22891234567"
+                  facebookUrl="https://facebook.com/votrepage"
+                />
               </>
             }
           />
@@ -45,6 +50,10 @@ function App() {
                 <Header />
                 <BlogPost />
                 <Footer />
+                <SocialButtons 
+                  whatsappNumber="22891234567"
+                  facebookUrl="https://facebook.com/votrepage"
+                />
               </>
             } 
           />
