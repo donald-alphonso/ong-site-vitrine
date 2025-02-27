@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* Links */
+  a {
+    @apply text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400;
+  }
+
+  /* Cards and sections */
+  section, article, aside, nav {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+  }
+
+  /* Form elements */
+  input, textarea, select {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-700;
+  }
+
+  /* Buttons */
+  button {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700;
+  }
+}
+
 /* Animations de base */
 @keyframes fadeIn {
   from {

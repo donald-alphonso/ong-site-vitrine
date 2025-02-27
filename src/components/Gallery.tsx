@@ -141,14 +141,18 @@ export function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Notre Galerie
-        </h2>
-        
-        {/* Filtres de catégories */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+    <section id="gallery" className="py-16 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+            Galerie
+          </h2>
+          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+            Découvrez nos moments les plus précieux en images
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           {categories.map((category) => (
             <button
               key={category}
@@ -158,10 +162,10 @@ export function Gallery() {
                 setShowAll(false);
                 setTimeout(() => setIsLoading(false), 300);
               }}
-              className={`px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
+              className={`px-4 py-2 rounded-full transition-all duration-300 ${
                 selectedCategory === category
                   ? 'bg-red-500 text-white'
-                  : 'bg-white text-gray-600 hover:bg-red-50'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/20'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -169,41 +173,35 @@ export function Gallery() {
           ))}
         </div>
 
-        {/* Grille d'images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredImages.map((image) => (
             <div
               key={image.id}
               onClick={() => handleImageClick(image)}
-              className={`relative group cursor-pointer transform transition-all duration-500 hover:scale-105 ${
+              className={`relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:transform hover:scale-105 bg-white dark:bg-gray-800 ${
                 isLoading ? 'opacity-0' : 'opacity-100'
               }`}
             >
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={image.url}
-                  alt={image.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="text-center text-white p-4">
-                      <h3 className="text-lg font-semibold mb-2">{image.title}</h3>
-                      <p className="text-sm">{image.description}</p>
-                    </div>
-                  </div>
-                </div>
+              <img
+                src={image.url}
+                alt={image.title}
+                className="w-full h-64 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
+                <p className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-center p-4">
+                  {image.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bouton Voir plus/moins */}
         {hasMoreImages && (
           <div className="text-center mt-8">
             <button
               onClick={handleToggleImages}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-md transition-all duration-300 transform hover:bg-red-600 hover:scale-105 hover:shadow-lg active:scale-95"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition-all duration-300"
             >
               {showAll ? (
                 <>
