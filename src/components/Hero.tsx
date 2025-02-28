@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
         <img
           src={heroImage}
           alt="Children playing"
