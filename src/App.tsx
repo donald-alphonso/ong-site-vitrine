@@ -15,51 +15,57 @@ import Login from './admin/pages/Login';
 import AdminRoutes from './admin/AdminRoutes';
 import BlogPost from './components/BlogPost';
 import { SocialButtons } from './components/SocialButtons';
+import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
-    <Router>
-      <div className="App relative">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Hero />
-                <Mission />
-                <Programs />
-                <Gallery />
-                <Testimonials />
-                <Blog />
-                <Contact />
-                <Footer />
-                <SocialButtons 
-                  whatsappNumber="22891234567"
-                  facebookUrl="https://facebook.com/votrepage"
-                />
-              </>
-            }
-          />
-          <Route path="/admin/*" element={<AdminRoutes />} />
-          <Route path="/login" element={<Login />} />
-          <Route 
-            path="/blog/:id" 
-            element={
-              <>
-                <Header />
-                <BlogPost />
-                <Footer />
-                <SocialButtons 
-                  whatsappNumber="22891234567"
-                  facebookUrl="https://facebook.com/votrepage"
-                />
-              </>
-            } 
-          />
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Router>
+          <div className="App relative min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Header />
+                    <Hero />
+                    <Mission />
+                    <Programs />
+                    <Gallery />
+                    <Testimonials />
+                    <Blog />
+                    <Contact />
+                    <Footer />
+                    <SocialButtons 
+                      whatsappNumber="+229 0196632283"
+                      facebookUrl="https://facebook.com/votrepage"
+                    />
+                  </>
+                }
+              />
+              <Route path="/admin/*" element={<AdminRoutes />} />
+              <Route path="/godshand-backoffice" element={<Login />} />
+              <Route 
+                path="/blog/:id" 
+                element={
+                  <>
+                    <Header />
+                    <BlogPost />
+                    <Footer />
+                    <SocialButtons 
+                      whatsappNumber="+229 0196632283"
+                      facebookUrl="https://facebook.com/votrepage"
+                    />
+                  </>
+                } 
+              />
+            </Routes>
+          </div>
+        </Router>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

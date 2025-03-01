@@ -60,7 +60,7 @@ export function SocialButtons({ whatsappNumber, facebookUrl }: SocialButtonsProp
         {/* WhatsApp Button */}
         <button
           onClick={handleWhatsAppClick}
-          className={`group relative flex items-center ${
+          className={`group relative flex items-center bg-transparent hover:bg-transparent${
             showPulse ? 'animate-bounce' : ''
           }`}
         >
@@ -78,7 +78,7 @@ export function SocialButtons({ whatsappNumber, facebookUrl }: SocialButtonsProp
         {/* Facebook Button */}
         <button
           onClick={handleFacebookClick}
-          className="group relative flex items-center"
+          className="group relative flex items-center bg-transparent hover:bg-transparent"
         >
           <span className="absolute right-full mr-3 bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
             Suivez-nous sur Facebook 👍

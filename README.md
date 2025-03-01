@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# God's Hand - Site Vitrine ONG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## À Propos
 
-## Available Scripts
+Site vitrine moderne pour l'ONG God's Hand, développé avec React, TypeScript et Tailwind CSS. Le site est entièrement responsive et supporte le mode sombre ainsi que le multilinguisme (Français/Anglais).
 
-In the project directory, you can run:
+## Fonctionnalités
 
-### `npm start`
+- **Design Moderne et Responsive**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Interface utilisateur élégante et adaptative
+  - Mode sombre/clair
+  - Animations fluides et interactives
+  - Composants réutilisables
+- **Sections Principales**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - Hero Banner avec appel à l'action
+  - Présentation de la mission
+  - Galerie de photos
+  - Témoignages
+  - Blog
+  - Formulaire de contact
+  - Boutons de réseaux sociaux flottants
+- **Internationalisation**
 
-### `npm test`
+  - Support multilingue (FR/EN)
+  - Système de traduction intégré
+  - Changement de langue dynamique
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Utilisées
 
-### `npm run build`
+- React 18
+- TypeScript
+- Tailwind CSS
+- Lucide React (icônes)
+- React Router
+- Context API (thème et langue)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Cloner le repository
+git clone [url-du-repo]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Installer les dépendances
+npm install
 
-### `npm run eject`
+# Lancer le serveur de développement
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Structure du Projet
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+src/
+├── components/         # Composants React
+├── context/           # Contextes (Theme, Language)
+├── styles/            # Styles globaux
+├── types/             # Types TypeScript
+└── App.tsx            # Point d'entrée de l'application
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## TODO List
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Traductions à Compléter
 
-## Learn More
+#### Section Blog
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ ]  Titres des articles
+- [ ]  Descriptions des articles
+- [ ]  Dates et catégories
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Section Contact
+
+- [ ]  Labels des champs
+- [ ]  Messages de validation
+- [ ]  Messages de succès/erreur
+
+#### Section Footer
+
+- [ ]  Informations de contact
+- [ ]  Liens de navigation
+- [ ]  Mentions légales
+
+### Améliorations Prévues
+
+- [ ]  Optimisation des images
+- [ ]  Amélioration de l'accessibilité (ARIA)
+- [ ]  Tests unitaires
+- [ ]  Documentation des composants
+- [ ]  Intégration de Google Analytics
+- [ ]  Optimisation SEO
+
+## Contribution
+
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## License
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## Contact
+
+Pour toute question ou suggestion, n'hésitez pas à nous contacter :
+
+- Email : contact@godshand.org
+- WhatsApp :
+- Facebook : @godshand

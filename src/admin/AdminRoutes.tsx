@@ -7,7 +7,7 @@ import MissionsPage from './pages/MissionsPage';
 import ProgramsPage from './pages/ProgramsPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import NewsPage from './pages/NewsPage';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
