@@ -39,14 +39,14 @@ function App() {
                     <Contact />
                     <Footer />
                     <SocialButtons 
-                      whatsappNumber="22891234567"
+                      whatsappNumber="+229 0196632283"
                       facebookUrl="https://facebook.com/votrepage"
                     />
                   </>
                 }
               />
               <Route path="/admin/*" element={<AdminRoutes />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/godshand-backoffice" element={<Login />} />
               <Route 
                 path="/blog/:id" 
                 element={
@@ -55,7 +55,7 @@ function App() {
                     <BlogPost />
                     <Footer />
                     <SocialButtons 
-                      whatsappNumber="22891234567"
+                      whatsappNumber="+229 0196632283"
                       facebookUrl="https://facebook.com/votrepage"
                     />
                   </>

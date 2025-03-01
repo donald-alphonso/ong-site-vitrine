@@ -41,11 +41,11 @@ export function Contact() {
             <div className="space-y-4">
               <div className="flex items-center">
                 <MapPin className="h-6 w-6 text-red-500 mr-3" />
-                <span>123 Rue de l'Espoir, 75001 Paris</span>
+                <span>Bohicon, Benin</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-6 w-6 text-red-500 mr-3" />
-                <span>+229 01 622 424 04</span>
+                <span>+229 01 96 63 22 83</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-6 w-6 text-red-500 mr-3" />

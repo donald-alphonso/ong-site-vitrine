@@ -14,11 +14,11 @@ export function Footer() {
   const contactInfo = [
     { 
       icon: <MapPin className="h-5 w-5 text-red-500" />,
-      text: "123 Rue de l'Espoir, Paris" 
+      text: "Bohicon, Benin" 
     },
     { 
       icon: <Phone className="h-5 w-5 text-red-500" />,
-      text: "+33 1 23 45 67 89" 
+      text: "+33 01 96 63 22 83" 
     },
     { 
       icon: <Mail className="h-5 w-5 text-red-500" />,
