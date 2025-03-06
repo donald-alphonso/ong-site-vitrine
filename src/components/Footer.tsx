@@ -18,7 +18,7 @@ export function Footer() {
     },
     { 
       icon: <Phone className="h-5 w-5 text-red-500" />,
-      text: "+33 01 96 63 22 83" 
+      text: "+229 01 96 63 22 83" 
     },
     { 
       icon: <Mail className="h-5 w-5 text-red-500" />,
