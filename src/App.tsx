@@ -39,7 +39,7 @@ function App() {
                     <Contact />
                     <Footer />
                     <SocialButtons 
-                      whatsappNumber="+229 0196632283"
+                      whatsappNumber="+2290196632283"
                       facebookUrl="https://facebook.com/votrepage"
                     />
                   </>
